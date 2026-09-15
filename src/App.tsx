@@ -13,6 +13,8 @@ import {
 } from './data/mockData';
 import { Navbar } from './components/Navbar';
 import { CaseSummaryBanner } from './components/CaseSummaryBanner';
+import { GuidedFlowStepper } from './components/GuidedFlowStepper';
+import { JargonBusterModal } from './components/JargonBusterModal';
 import { FinancialSupportMap } from './components/FinancialSupportMap';
 import { DocumentReadiness } from './components/DocumentReadiness';
 import { ApplicationWorkflows } from './components/ApplicationWorkflows';
@@ -39,6 +41,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<string>('support_map');
   const [isProfileModalOpen, setIsProfileModalOpen] = useState<boolean>(false);
   const [isCaregiverMode, setIsCaregiverMode] = useState<boolean>(true);
+  const [isJargonBusterOpen, setIsJargonBusterOpen] = useState<boolean>(false);
 
   // Sync documents whenever profile documents change
   const handleUpdateDocuments = (updatedDocs: DocumentItem[]) => {
@@ -58,6 +61,14 @@ export default function App() {
   const handleSaveProfile = (updated: PatientProfile) => {
     setProfile(updated);
     setDocuments(updated.uploadedDocuments);
+  };
+
+  const handleUpdateCostEstimate = (newCost: number, newIncome?: number) => {
+    setProfile(prev => ({
+      ...prev,
+      estimatedCost: newCost,
+      annualIncome: newIncome !== undefined ? newIncome : prev.annualIncome
+    }));
   };
 
   const t = TRANSLATIONS[language];
@@ -89,109 +100,15 @@ export default function App() {
         activePreset={activePreset}
       />
 
-      {/* Main Navigation Tabs */}
-      <div className="bg-white border-b border-slate-200 sticky top-16 z-30 shadow-2xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex space-x-1 sm:space-x-4 overflow-x-auto py-2.5 scrollbar-none" aria-label="Tabs">
-            {/* Tab 1: Financial Support Map */}
-            <button
-              id="tab-support-map"
-              onClick={() => setActiveTab('support_map')}
-              className={`px-3 py-2 text-xs sm:text-sm font-bold rounded-xl flex items-center gap-2 whitespace-nowrap transition-all ${
-                activeTab === 'support_map'
-                  ? 'bg-slate-900 text-white shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-              }`}
-            >
-              <Layers className="w-4 h-4 text-emerald-400" />
-              <span>{t.tabSupportMap}</span>
-            </button>
-
-            {/* Tab 2: Document Readiness */}
-            <button
-              id="tab-documents"
-              onClick={() => setActiveTab('documents')}
-              className={`px-3 py-2 text-xs sm:text-sm font-bold rounded-xl flex items-center gap-2 whitespace-nowrap transition-all ${
-                activeTab === 'documents'
-                  ? 'bg-slate-900 text-white shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-              }`}
-            >
-              <FileCheck2 className="w-4 h-4 text-emerald-400" />
-              <span>{t.tabDocuments}</span>
-              {missingDocsCount > 0 && (
-                <span className="ml-1 px-1.5 py-0.2 rounded-full text-[11px] font-extrabold bg-amber-500 text-slate-950">
-                  {missingDocsCount}
-                </span>
-              )}
-            </button>
-
-            {/* Tab 3: One Application -> Multiple Pathways */}
-            <button
-              id="tab-one-app"
-              onClick={() => setActiveTab('one_application')}
-              className={`px-3 py-2 text-xs sm:text-sm font-bold rounded-xl flex items-center gap-2 whitespace-nowrap transition-all ${
-                activeTab === 'one_application'
-                  ? 'bg-slate-900 text-white shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-              }`}
-            >
-              <FileSpreadsheet className="w-4 h-4 text-indigo-400" />
-              <span>{t.tabOneApplication}</span>
-              <span className="hidden lg:inline text-[10px] bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-bold uppercase">
-                USP
-              </span>
-            </button>
-
-            {/* Tab 4: My Support Journey & Tracking */}
-            <button
-              id="tab-tracking"
-              onClick={() => setActiveTab('tracking')}
-              className={`px-3 py-2 text-xs sm:text-sm font-bold rounded-xl flex items-center gap-2 whitespace-nowrap transition-all ${
-                activeTab === 'tracking'
-                  ? 'bg-slate-900 text-white shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-              }`}
-            >
-              <Clock className="w-4 h-4 text-sky-400" />
-              <span>{t.tabTracking}</span>
-              {pendingActionsCount > 0 && (
-                <span className="ml-1 px-1.5 py-0.2 rounded-full text-[11px] font-extrabold bg-rose-500 text-white animate-pulse">
-                  {pendingActionsCount}
-                </span>
-              )}
-            </button>
-
-            {/* Tab 5: Insurance Navigation */}
-            <button
-              id="tab-insurance"
-              onClick={() => setActiveTab('insurance')}
-              className={`px-3 py-2 text-xs sm:text-sm font-bold rounded-xl flex items-center gap-2 whitespace-nowrap transition-all ${
-                activeTab === 'insurance'
-                  ? 'bg-slate-900 text-white shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-              }`}
-            >
-              <ShieldCheck className="w-4 h-4 text-sky-400" />
-              <span>{t.tabInsurance}</span>
-            </button>
-
-            {/* Tab 6: AI Financial Care Navigator */}
-            <button
-              id="tab-ai-navigator"
-              onClick={() => setActiveTab('ai_navigator')}
-              className={`px-3 py-2 text-xs sm:text-sm font-bold rounded-xl flex items-center gap-2 whitespace-nowrap transition-all ${
-                activeTab === 'ai_navigator'
-                  ? 'bg-emerald-700 text-white shadow-xs'
-                  : 'text-emerald-800 bg-emerald-50 hover:bg-emerald-100'
-              }`}
-            >
-              <Sparkles className="w-4 h-4 text-emerald-300" />
-              <span>{t.tabAiNavigator}</span>
-            </button>
-          </nav>
-        </div>
-      </div>
+      {/* 4-Step Layman Guided Flow Stepper & Dictionary */}
+      <GuidedFlowStepper
+        activeTab={activeTab}
+        onSelectTab={setActiveTab}
+        language={language}
+        missingDocsCount={missingDocsCount}
+        pendingActionsCount={pendingActionsCount}
+        onOpenJargonBuster={() => setIsJargonBusterOpen(true)}
+      />
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -200,6 +117,7 @@ export default function App() {
             profile={profile}
             language={language}
             onNavigateTab={setActiveTab}
+            onUpdateCostEstimate={handleUpdateCostEstimate}
           />
         )}
 
@@ -209,6 +127,7 @@ export default function App() {
             onUpdateDocuments={handleUpdateDocuments}
             language={language}
             patientProfile={profile}
+            onNavigateTab={setActiveTab}
           />
         )}
 
@@ -216,6 +135,7 @@ export default function App() {
           <ApplicationWorkflows
             profile={profile}
             language={language}
+            onNavigateTab={setActiveTab}
           />
         )}
 
@@ -250,6 +170,13 @@ export default function App() {
         onClose={() => setIsProfileModalOpen(false)}
         profile={profile}
         onSave={handleSaveProfile}
+        language={language}
+      />
+
+      {/* Hospital Terms Dictionary / Jargon Buster Modal */}
+      <JargonBusterModal
+        isOpen={isJargonBusterOpen}
+        onClose={() => setIsJargonBusterOpen(false)}
         language={language}
       />
 

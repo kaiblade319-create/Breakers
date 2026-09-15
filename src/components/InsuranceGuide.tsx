@@ -29,7 +29,7 @@ export const InsuranceGuide: React.FC<InsuranceGuideProps> = ({
   return (
     <div className="space-y-6">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-sky-950 via-slate-900 to-indigo-950 text-white rounded-2xl p-6 shadow-sm">
+      <div className="bg-gradient-to-r from-sky-950 via-slate-900 to-indigo-950 text-white rounded-2xl p-4 sm:p-6 shadow-sm">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-sky-500/20 text-sky-300 border border-sky-500/30 mb-2">
           <ShieldCheck className="w-3.5 h-3.5" />
           Patient-Side Insurance & TPA Navigator
@@ -37,15 +37,15 @@ export const InsuranceGuide: React.FC<InsuranceGuideProps> = ({
         <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
           Insurance Navigation & Claim Protection
         </h2>
-        <p className="text-sky-200 text-sm mt-1 max-w-2xl">
+        <p className="text-sky-200 text-xs sm:text-sm mt-1 max-w-2xl">
           Demystifying TPAs (Medi Assist, Vidal, Paramount, Star Health), cashless pre-authorization, reimbursement filing timelines, and hidden deductions.
         </p>
 
         {/* Sub Navigation Buttons */}
-        <div className="flex flex-wrap gap-2 mt-5 pt-4 border-t border-sky-900/80">
+        <div className="flex flex-wrap gap-2 mt-4 sm:mt-5 pt-4 border-t border-sky-900/80">
           <button
             onClick={() => setActiveSubTab('comparison')}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+            className={`px-3.5 py-2 sm:py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer min-h-[38px] sm:min-h-0 flex items-center ${
               activeSubTab === 'comparison'
                 ? 'bg-white text-slate-900 shadow-xs'
                 : 'bg-slate-800/80 text-sky-200 hover:bg-slate-700'
@@ -55,7 +55,7 @@ export const InsuranceGuide: React.FC<InsuranceGuideProps> = ({
           </button>
           <button
             onClick={() => setActiveSubTab('deductions')}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+            className={`px-3.5 py-2 sm:py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer min-h-[38px] sm:min-h-0 flex items-center ${
               activeSubTab === 'deductions'
                 ? 'bg-white text-slate-900 shadow-xs'
                 : 'bg-slate-800/80 text-sky-200 hover:bg-slate-700'
@@ -65,7 +65,7 @@ export const InsuranceGuide: React.FC<InsuranceGuideProps> = ({
           </button>
           <button
             onClick={() => setActiveSubTab('timelines')}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+            className={`px-3.5 py-2 sm:py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer min-h-[38px] sm:min-h-0 flex items-center ${
               activeSubTab === 'timelines'
                 ? 'bg-white text-slate-900 shadow-xs'
                 : 'bg-slate-800/80 text-sky-200 hover:bg-slate-700'
@@ -105,11 +105,11 @@ export const InsuranceGuide: React.FC<InsuranceGuideProps> = ({
               </div>
             </div>
 
-            <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div className="mt-5 pt-3 border-t border-slate-100 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
               <span className="text-xs text-emerald-700 font-semibold">TPA turnaround: ~4 to 6 hrs</span>
               <button
                 onClick={() => onNavigateTab('one_application')}
-                className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold"
+                className="px-3.5 py-2 sm:py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl sm:rounded-lg text-xs font-semibold cursor-pointer min-h-[44px] sm:min-h-0 flex items-center justify-center"
               >
                 Pre-fill Pre-Auth Form →
               </button>
@@ -142,11 +142,11 @@ export const InsuranceGuide: React.FC<InsuranceGuideProps> = ({
               </div>
             </div>
 
-            <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div className="mt-5 pt-3 border-t border-slate-100 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
               <span className="text-xs text-slate-600 font-semibold">Settlement window: 15 to 21 days</span>
               <button
                 onClick={() => onNavigateTab('documents')}
-                className="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-xs font-semibold"
+                className="px-3.5 py-2 sm:py-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl sm:rounded-lg text-xs font-semibold cursor-pointer min-h-[44px] sm:min-h-0 flex items-center justify-center"
               >
                 Check Reimbursement Docs →
               </button>
@@ -157,7 +157,7 @@ export const InsuranceGuide: React.FC<InsuranceGuideProps> = ({
 
       {/* SubTab 2: Deductions & Co-pay */}
       {activeSubTab === 'deductions' && (
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+        <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-xs space-y-4">
           <div>
             <h3 className="text-base font-bold text-slate-900">
               Why Does the Insurance TPA Deduct Money from the Claim?
@@ -213,7 +213,7 @@ export const InsuranceGuide: React.FC<InsuranceGuideProps> = ({
 
       {/* SubTab 3: Deadlines & Turnaround */}
       {activeSubTab === 'timelines' && (
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+        <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-xs space-y-4">
           <h3 className="text-base font-bold text-slate-900">
             Critical Healthcare Financial Timelines & Deadlines
           </h3>
@@ -223,7 +223,7 @@ export const InsuranceGuide: React.FC<InsuranceGuideProps> = ({
                 <span className="font-bold text-slate-900">Planned Cashless Pre-Auth</span>
                 <p className="text-slate-500">Submit to TPA desk at empanelled hospital</p>
               </div>
-              <span className="font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
+              <span className="font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full self-start sm:self-auto shrink-0">
                 48 Hours before admission
               </span>
             </div>
@@ -233,7 +233,7 @@ export const InsuranceGuide: React.FC<InsuranceGuideProps> = ({
                 <span className="font-bold text-slate-900">Emergency Cashless Intimation</span>
                 <p className="text-slate-500">Intimate insurer / TPA via helpline or app</p>
               </div>
-              <span className="font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full">
+              <span className="font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full self-start sm:self-auto shrink-0">
                 Within 24 Hours of hospitalization
               </span>
             </div>
@@ -243,7 +243,7 @@ export const InsuranceGuide: React.FC<InsuranceGuideProps> = ({
                 <span className="font-bold text-slate-900">Reimbursement Claim Docket Submission</span>
                 <p className="text-slate-500">Submit original bills & discharge summary to TPA branch</p>
               </div>
-              <span className="font-bold text-rose-700 bg-rose-50 px-3 py-1 rounded-full">
+              <span className="font-bold text-rose-700 bg-rose-50 px-3 py-1 rounded-full self-start sm:self-auto shrink-0">
                 Strictly within 15 – 30 Days of discharge
               </span>
             </div>
@@ -253,7 +253,7 @@ export const InsuranceGuide: React.FC<InsuranceGuideProps> = ({
                 <span className="font-bold text-slate-900">Post-Hospitalization Expenses Claim</span>
                 <p className="text-slate-500">Chemotherapy medicines, follow-up tests, consultations</p>
               </div>
-              <span className="font-bold text-sky-700 bg-sky-50 px-3 py-1 rounded-full">
+              <span className="font-bold text-sky-700 bg-sky-50 px-3 py-1 rounded-full self-start sm:self-auto shrink-0">
                 Within 60 to 90 Days post-discharge
               </span>
             </div>

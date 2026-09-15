@@ -39,7 +39,7 @@ export const DocumentItemRow: React.FC<DocumentItemRowProps> = ({
     } shadow-2xs`}>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         {/* Left Side: Status Icon & Details */}
-        <div className="flex items-start gap-3">
+        <div className="flex items-start gap-3 min-w-0 flex-1">
           <div className="mt-0.5 shrink-0">
             {isVerified ? (
               <div className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
@@ -56,9 +56,9 @@ export const DocumentItemRow: React.FC<DocumentItemRowProps> = ({
             )}
           </div>
 
-          <div className="space-y-1">
+          <div className="space-y-1 min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="font-extrabold text-sm text-slate-900">
+              <span className="font-extrabold text-sm text-slate-900 break-words">
                 {doc.name}
               </span>
               {isVerified && (
@@ -104,7 +104,7 @@ export const DocumentItemRow: React.FC<DocumentItemRowProps> = ({
         </div>
 
         {/* Right Side: Actions */}
-        <div className="flex items-center gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 justify-end">
+        <div className="flex items-center gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 justify-start sm:justify-end flex-wrap">
           {doc.uploaded ? (
             <>
               <button

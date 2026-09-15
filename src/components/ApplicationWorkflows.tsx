@@ -87,10 +87,10 @@ export const ApplicationWorkflows: React.FC<ApplicationWorkflowsProps> = ({
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5 sm:space-y-6">
       {/* Top Header Card */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-xs space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-xs space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-4 border-b border-slate-100">
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-900 mb-1.5">
               <span>Step 3 of 4</span>
@@ -105,10 +105,10 @@ export const ApplicationWorkflows: React.FC<ApplicationWorkflowsProps> = ({
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
             <button
               onClick={() => handleCopy(getActiveText())}
-              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
+              className="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer min-h-[44px] sm:min-h-0"
             >
               {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
               <span>{copied ? 'Copied Dossier!' : 'Copy Active Dossier'}</span>
@@ -116,17 +116,17 @@ export const ApplicationWorkflows: React.FC<ApplicationWorkflowsProps> = ({
             <button
               onClick={handleGenerateAiLetter}
               disabled={isGeneratingAiLetter}
-              className="px-4 py-2 bg-slate-900 hover:bg-slate-800 disabled:opacity-50 text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
+              className="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 disabled:opacity-50 text-white text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer min-h-[44px] sm:min-h-0"
             >
               <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-              <span>{isGeneratingAiLetter ? 'Drafting...' : 'AI Custom Concession Letter'}</span>
+              <span>{isGeneratingAiLetter ? 'Drafting...' : 'AI Concession Letter'}</span>
             </button>
           </div>
         </div>
 
         {/* Why this saves days of time */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-          <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs">
+          <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 sm:p-3.5">
             <div className="font-bold text-slate-700 mb-1">
               Traditional Hospital Experience:
             </div>
@@ -135,7 +135,7 @@ export const ApplicationWorkflows: React.FC<ApplicationWorkflowsProps> = ({
             </p>
           </div>
 
-          <div className="bg-indigo-50/70 border border-indigo-200 rounded-xl p-3.5">
+          <div className="bg-indigo-50/70 border border-indigo-200 rounded-xl p-3 sm:p-3.5">
             <div className="font-bold text-indigo-900 mb-1">
               CareNav Unified Approach:
             </div>
@@ -146,11 +146,11 @@ export const ApplicationWorkflows: React.FC<ApplicationWorkflowsProps> = ({
         </div>
       </div>
 
-      {/* Pathway Switcher Tabs */}
-      <div className="flex flex-wrap gap-2">
+      {/* Pathway Switcher Tabs - Mobile scrollable pill track */}
+      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none snap-x w-full">
         <button
           onClick={() => setActivePathway('govt')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+          className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer border shrink-0 snap-start min-h-[44px] sm:min-h-0 ${
             activePathway === 'govt'
               ? 'bg-slate-900 text-white border-slate-900 shadow-2xs'
               : 'bg-white text-slate-700 hover:bg-slate-50 border-slate-200'
@@ -162,7 +162,7 @@ export const ApplicationWorkflows: React.FC<ApplicationWorkflowsProps> = ({
 
         <button
           onClick={() => setActivePathway('insurance')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+          className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer border shrink-0 snap-start min-h-[44px] sm:min-h-0 ${
             activePathway === 'insurance'
               ? 'bg-slate-900 text-white border-slate-900 shadow-2xs'
               : 'bg-white text-slate-700 hover:bg-slate-50 border-slate-200'
@@ -174,7 +174,7 @@ export const ApplicationWorkflows: React.FC<ApplicationWorkflowsProps> = ({
 
         <button
           onClick={() => setActivePathway('hospital')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+          className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer border shrink-0 snap-start min-h-[44px] sm:min-h-0 ${
             activePathway === 'hospital'
               ? 'bg-slate-900 text-white border-slate-900 shadow-2xs'
               : 'bg-white text-slate-700 hover:bg-slate-50 border-slate-200'
@@ -186,7 +186,7 @@ export const ApplicationWorkflows: React.FC<ApplicationWorkflowsProps> = ({
 
         <button
           onClick={() => setActivePathway('ngo')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+          className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer border shrink-0 snap-start min-h-[44px] sm:min-h-0 ${
             activePathway === 'ngo'
               ? 'bg-slate-900 text-white border-slate-900 shadow-2xs'
               : 'bg-white text-slate-700 hover:bg-slate-50 border-slate-200'
@@ -199,56 +199,56 @@ export const ApplicationWorkflows: React.FC<ApplicationWorkflowsProps> = ({
 
       {/* Pre-filled Dossier Preview Card */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
-        <div className="p-4 bg-slate-50 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
+        <div className="p-3.5 sm:p-4 bg-slate-50 border-b border-slate-200 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
           <div className="flex items-center gap-2">
-            <FileSpreadsheet className="w-5 h-5 text-indigo-600" />
-            <span className="font-bold text-slate-900 text-sm">
-              Standardized Pre-filled Form Package
+            <FileSpreadsheet className="w-4 h-4 text-indigo-600 shrink-0" />
+            <span className="font-bold text-slate-900 text-xs sm:text-sm">
+              Standardized Pre-filled Form
             </span>
-            <span className="text-[11px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold">
-              Ready for Print & Submission
+            <span className="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold shrink-0">
+              Ready
             </span>
           </div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={() => window.print()}
-              className="px-3 py-1.5 text-xs font-bold text-slate-700 hover:text-slate-900 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 flex items-center gap-1.5 cursor-pointer shadow-2xs"
+              className="flex-1 sm:flex-none px-3 py-2 text-xs font-bold text-slate-700 hover:text-slate-900 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs min-h-[40px] sm:min-h-0"
             >
               <Printer className="w-3.5 h-3.5" />
-              <span>Print Dossier</span>
+              <span>Print</span>
             </button>
             <button
               onClick={() => handleCopy(getActiveText())}
-              className="px-3 py-1.5 text-xs font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-xl flex items-center gap-1.5 shadow-2xs cursor-pointer"
+              className="flex-1 sm:flex-none px-3 py-2 text-xs font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-xl flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer min-h-[40px] sm:min-h-0"
             >
               {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copied ? 'Copied' : 'Copy Text'}</span>
+              <span>{copied ? 'Copied' : 'Copy'}</span>
             </button>
           </div>
         </div>
 
         {/* Monospace Form Preview */}
-        <div className="p-5 overflow-x-auto bg-slate-900 text-slate-100 font-mono text-xs leading-relaxed max-h-[460px]">
+        <div className="p-3.5 sm:p-5 overflow-x-auto bg-slate-900 text-slate-100 font-mono text-[11px] sm:text-xs leading-relaxed max-h-[420px] scrollbar-thin">
           <pre className="whitespace-pre-wrap font-mono">{getActiveText()}</pre>
         </div>
 
-        <div className="p-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-600">
+        <div className="p-3 sm:p-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 text-xs text-slate-600">
           <div>
-            Data linked to patient: <strong className="text-slate-900">{profile.name}</strong> • UHID: {profile.uhid || 'HOSP-2026-08149'}
+            Data linked to: <strong className="text-slate-900">{profile.name}</strong> • UHID: {profile.uhid || 'HOSP-2026-08149'}
           </div>
           <div className="text-emerald-700 font-bold">
-            Dossier auto-updates if patient diagnosis or estimates change.
+            Auto-updates if patient inputs change.
           </div>
         </div>
       </div>
 
       {/* Prominent Next / Back Navigation Card */}
       {onNavigateTab && (
-        <div className="bg-slate-900 text-white p-5 sm:p-6 rounded-2xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+        <div className="bg-slate-900 text-white p-4 sm:p-6 rounded-2xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 shadow-sm">
           <button
             onClick={() => onNavigateTab('documents')}
-            className="w-full sm:w-auto px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl text-xs flex items-center justify-center gap-2 transition-all shrink-0 cursor-pointer border border-slate-700"
+            className="w-full sm:w-auto px-4 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl text-xs flex items-center justify-center gap-2 transition-all shrink-0 cursor-pointer border border-slate-700 min-h-[44px]"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>← Back to Step 2: Documents</span>
@@ -259,16 +259,16 @@ export const ApplicationWorkflows: React.FC<ApplicationWorkflowsProps> = ({
               Dossier Ready for Submission
             </div>
             <div className="text-xs text-slate-300 mt-0.5">
-              Submit this at the Hospital Helpdesk / TPA Counter, then track approvals in real time.
+              Submit at Hospital Helpdesk / TPA Counter, then track approvals live.
             </div>
           </div>
 
           <button
             id="proceed-to-step4-btn"
             onClick={() => onNavigateTab('tracking')}
-            className="w-full sm:w-auto px-6 py-3.5 bg-indigo-500 hover:bg-indigo-400 text-slate-950 font-black rounded-xl text-sm flex items-center justify-center gap-2 shadow-sm hover:shadow-md transition-all shrink-0 cursor-pointer"
+            className="w-full sm:w-auto px-6 py-3.5 bg-indigo-500 hover:bg-indigo-400 text-slate-950 font-black rounded-xl text-sm flex items-center justify-center gap-2 shadow-sm hover:shadow-md transition-all shrink-0 cursor-pointer min-h-[44px]"
           >
-            <span>Next: Track Hospital Approvals (Step 4 of 4)</span>
+            <span>Next: Track Approvals (Step 4 of 4)</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

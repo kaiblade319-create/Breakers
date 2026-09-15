@@ -176,24 +176,24 @@ export const AINavigatorChat: React.FC<AINavigatorChatProps> = ({
             return (
               <div
                 key={msg.id}
-                className={`flex gap-3 max-w-[85%] sm:max-w-[75%] ${
+                className={`flex gap-2.5 sm:gap-3 max-w-[92%] sm:max-w-[80%] ${
                   isUser ? 'ml-auto flex-row-reverse' : 'mr-auto'
                 }`}
               >
                 {/* Avatar */}
                 <div
-                  className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 shadow-2xs ${
+                  className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center shrink-0 shadow-2xs ${
                     isUser
                       ? 'bg-slate-900 text-white'
                       : 'bg-emerald-600 text-white'
                   }`}
                 >
-                  {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                  {isUser ? <User className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : <Bot className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
                 </div>
 
                 {/* Message bubble */}
                 <div
-                  className={`rounded-2xl p-4 text-xs sm:text-sm leading-relaxed ${
+                  className={`rounded-2xl p-3.5 sm:p-4 text-xs sm:text-sm leading-relaxed min-w-0 max-w-full ${
                     isUser
                       ? 'bg-slate-900 text-white rounded-tr-xs'
                       : 'bg-white text-slate-800 border border-slate-200 shadow-xs rounded-tl-xs'
@@ -207,7 +207,7 @@ export const AINavigatorChat: React.FC<AINavigatorChatProps> = ({
                       </span>
                       <button
                         onClick={() => handleCopy(msg.id, msg.text)}
-                        className="hover:text-slate-800 flex items-center gap-1"
+                        className="hover:text-slate-800 flex items-center gap-1 cursor-pointer"
                         title="Copy message"
                       >
                         {copiedId === msg.id ? (
@@ -226,9 +226,9 @@ export const AINavigatorChat: React.FC<AINavigatorChatProps> = ({
                   )}
 
                   {isUser ? (
-                    <div className="whitespace-pre-wrap">{msg.text}</div>
+                    <div className="whitespace-pre-wrap break-words">{msg.text}</div>
                   ) : (
-                    <div className="markdown-body text-slate-800 space-y-2 [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_li]:mt-1 [&_strong]:font-bold [&_strong]:text-slate-900 [&_h3]:font-bold [&_h3]:text-sm [&_h4]:font-semibold [&_h4]:text-xs [&_table]:w-full [&_th]:border [&_th]:p-1.5 [&_td]:border [&_td]:p-1.5">
+                    <div className="markdown-body text-slate-800 space-y-2 overflow-x-auto [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_li]:mt-1 [&_strong]:font-bold [&_strong]:text-slate-900 [&_h3]:font-bold [&_h3]:text-sm [&_h4]:font-semibold [&_h4]:text-xs [&_table]:w-full [&_table]:block [&_table]:overflow-x-auto [&_th]:border [&_th]:p-1.5 [&_td]:border [&_td]:p-1.5">
                       <Markdown>{msg.text}</Markdown>
                     </div>
                   )}
@@ -243,7 +243,7 @@ export const AINavigatorChat: React.FC<AINavigatorChatProps> = ({
                             else if (action.includes('Scheme')) onNavigateTab('support_map');
                             else onNavigateTab('insurance');
                           }}
-                          className="px-2.5 py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded-lg text-xs font-semibold border border-emerald-200 transition-colors flex items-center gap-1"
+                          className="px-2.5 py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded-lg text-xs font-semibold border border-emerald-200 transition-colors flex items-center gap-1 cursor-pointer"
                         >
                           <span>{action}</span>
                           <ArrowRight className="w-3 h-3" />
@@ -257,15 +257,15 @@ export const AINavigatorChat: React.FC<AINavigatorChatProps> = ({
           })}
 
           {loading && (
-            <div className="flex gap-3 max-w-[75%] mr-auto items-center">
-              <div className="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0">
-                <Bot className="w-4 h-4 animate-spin" />
+            <div className="flex gap-2.5 sm:gap-3 max-w-[92%] sm:max-w-[80%] mr-auto items-center">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0">
+                <Bot className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-spin" />
               </div>
-              <div className="bg-white border border-slate-200 rounded-2xl rounded-tl-xs p-4 text-xs text-slate-500 shadow-xs flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-bounce"></span>
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-bounce delay-100"></span>
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-bounce delay-200"></span>
-                <span>Analyzing schemes, TPA guidelines, and patient financial rules...</span>
+              <div className="bg-white border border-slate-200 rounded-2xl rounded-tl-xs p-3.5 sm:p-4 text-xs text-slate-500 shadow-xs flex items-center gap-2 min-w-0">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-bounce shrink-0"></span>
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-bounce delay-100 shrink-0"></span>
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-bounce delay-200 shrink-0"></span>
+                <span className="truncate sm:whitespace-normal">Analyzing schemes, TPA guidelines, and patient financial rules...</span>
               </div>
             </div>
           )}

@@ -15,6 +15,7 @@ import { Navbar } from './components/Navbar';
 import { CaseSummaryBanner } from './components/CaseSummaryBanner';
 import { GuidedFlowStepper } from './components/GuidedFlowStepper';
 import { JargonBusterModal } from './components/JargonBusterModal';
+import { MobileBottomNav } from './components/navigation/MobileBottomNav';
 import { FinancialSupportMap } from './components/FinancialSupportMap';
 import { DocumentReadiness } from './components/DocumentReadiness';
 import { ApplicationWorkflows } from './components/ApplicationWorkflows';
@@ -111,7 +112,7 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 pb-24 sm:pb-8">
         {activeTab === 'support_map' && (
           <FinancialSupportMap
             profile={profile}
@@ -180,8 +181,18 @@ export default function App() {
         language={language}
       />
 
+      {/* Mobile Bottom Navigation Bar (1-Thumb navigation for patients & caregivers on mobile) */}
+      <MobileBottomNav
+        activeTab={activeTab}
+        onSelectTab={setActiveTab}
+        missingDocsCount={missingDocsCount}
+        pendingActionsCount={pendingActionsCount}
+        onOpenJargonBuster={() => setIsJargonBusterOpen(true)}
+        language={language}
+      />
+
       {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+      <footer className="bg-white border-t border-slate-200 py-6 pb-24 sm:pb-6 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="font-semibold text-slate-700">
             Healthcare Financial Navigator (CareNav) • Connecting Patient, Hospital, Schemes & Insurance

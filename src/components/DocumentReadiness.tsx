@@ -212,7 +212,7 @@ export const DocumentReadiness: React.FC<DocumentReadinessProps> = ({
       />
 
       {/* Category Filter Pills */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none snap-x w-full">
         {[
           { id: 'all', label: 'All Documents' },
           { id: 'identity', label: 'Identity (Aadhaar/Ration)' },
@@ -223,7 +223,7 @@ export const DocumentReadiness: React.FC<DocumentReadinessProps> = ({
           <button
             key={cat.id}
             onClick={() => setSelectedCategory(cat.id)}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-colors cursor-pointer border ${
+            className={`px-3.5 py-2 sm:py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-colors cursor-pointer border shrink-0 snap-start min-h-[40px] sm:min-h-0 ${
               selectedCategory === cat.id
                 ? 'bg-slate-900 text-white border-slate-900 shadow-2xs'
                 : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'

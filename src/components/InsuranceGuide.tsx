@@ -204,7 +204,7 @@ export const InsuranceGuide: React.FC<InsuranceGuideProps> = ({
                 4. Bridging the Gap with Hospital MSW / Schemes
               </h4>
               <p className="text-slate-600 mt-1.5 leading-relaxed">
-                This is where CareNav's multi-pathway navigator excels: the non-payable gap and co-pay can often be covered by Hospital Indigent Trust funds or state relief schemes if presented proactively!
+                This is where InCare's multi-pathway navigator excels: the non-payable gap and co-pay can often be covered by Hospital Indigent Trust funds or state relief schemes if presented proactively!
               </p>
             </div>
           </div>

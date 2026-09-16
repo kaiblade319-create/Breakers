@@ -170,8 +170,10 @@ export function calculatePatientAid(
   }
 
   // Calculate remaining Out-of-pocket
-  const estimatedOutOfPocket = Math.max(15000, cost - totalMaxAid);
-  const reductionPercentage = Math.min(95, Math.round(((cost - estimatedOutOfPocket) / cost) * 100));
+  const estimatedOutOfPocket = Math.max(0, cost - totalMaxAid);
+  const reductionPercentage = cost > 0
+    ? Math.max(0, Math.min(100, Math.round(((cost - estimatedOutOfPocket) / cost) * 100)))
+    : 0;
 
   return {
     supportOptions,

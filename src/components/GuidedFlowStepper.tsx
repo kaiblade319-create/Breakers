@@ -210,7 +210,7 @@ export const GuidedFlowStepper: React.FC<GuidedFlowStepperProps> = ({
                   ? 'bg-emerald-700 text-white border-emerald-800 shadow-xs'
                   : 'bg-emerald-50 text-emerald-900 border-emerald-200 hover:bg-emerald-100'
               }`}
-              title="Ask our AI Healthcare Financial Navigator in any language"
+              title="Ask InCare AI in any language"
             >
               <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
               <span>{language === 'hi' ? 'AI सहायक' : language === 'mr' ? 'AI मदत' : 'AI Helper'}</span>

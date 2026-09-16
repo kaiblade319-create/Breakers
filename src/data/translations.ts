@@ -2,7 +2,7 @@ import { Language } from '../types';
 
 export const TRANSLATIONS: Record<Language, Record<string, string>> = {
   en: {
-    appTitle: 'Healthcare Financial Navigator',
+    appTitle: 'InCare',
     appTagline: 'One financial navigation layer across healthcare support options',
     caregiverMode: 'Caregiver Mode',
     patientMode: 'Patient View',
@@ -77,7 +77,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     department: 'Department / Desk',
   },
   hi: {
-    appTitle: 'हेल्थकेयर फाइनेंशियल नेविगेटर',
+    appTitle: 'InCare (इनकेयर)',
     appTagline: 'स्वास्थ्य खर्च सहायता विकल्पों के लिए एक एकीकृत वित्तीय नेविगेशन मंच',
     caregiverMode: 'केयरगिवर (परिजन) मोड',
     patientMode: 'मरीज़ दृश्य',
@@ -152,7 +152,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     department: 'विभाग / काउंटर',
   },
   mr: {
-    appTitle: 'हेल्थकेयर फायनान्शियल नेव्हिगेटर',
+    appTitle: 'InCare (इनकेअर)',
     appTagline: 'आरोग्य उपचार खर्चात मदतीसाठी एकात्मिक आर्थिक मार्गदर्शन प्लॅटफॉर्म',
     caregiverMode: 'काळजीवाहू (कुटुंबीय) मोड',
     patientMode: 'रुग्ण दृश्य',

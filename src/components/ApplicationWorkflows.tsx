@@ -137,7 +137,7 @@ export const ApplicationWorkflows: React.FC<ApplicationWorkflowsProps> = ({
 
           <div className="bg-indigo-50/70 border border-indigo-200 rounded-xl p-3 sm:p-3.5">
             <div className="font-bold text-indigo-900 mb-1">
-              CareNav Unified Approach:
+              InCare Unified Approach:
             </div>
             <p className="text-indigo-900 leading-relaxed">
               Your patient profile automatically populates all 4 required formats. Select the department tab below, print or copy, and hand it to the hospital desk officer.

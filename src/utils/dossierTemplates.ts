@@ -4,7 +4,7 @@ export function getGovernmentDossier(profile: PatientProfile): string {
   return `================================================================================
 GOVERNMENT HEALTH ASSURANCE SCHEME (MJPJAY / PM-JAY) PRE-AUTHORIZATION DOSSIER
 ================================================================================
-Generated via Healthcare Financial Navigator | 1-Click Multi-Pathway Engine
+Generated via InCare | 1-Click Multi-Pathway Engine
 
 1. PATIENT IDENTIFICATION:
    - Patient Name: ${profile.name}

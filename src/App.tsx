@@ -9,7 +9,8 @@ import { TRANSLATIONS } from './data/translations';
 import { 
   INITIAL_PATIENT_PROFILES, 
   INITIAL_DOCUMENTS, 
-  INITIAL_TRACKING_STREAMS 
+  INITIAL_TRACKING_STREAMS,
+  PRESET_TRACKING_STREAMS
 } from './data/mockData';
 import { Navbar } from './components/Navbar';
 import { CaseSummaryBanner } from './components/CaseSummaryBanner';
@@ -56,6 +57,9 @@ export default function App() {
       const chosen = INITIAL_PATIENT_PROFILES[presetKey];
       setProfile(chosen);
       setDocuments(chosen.uploadedDocuments);
+      if (PRESET_TRACKING_STREAMS[presetKey]) {
+        setStreams(PRESET_TRACKING_STREAMS[presetKey]);
+      }
     }
   };
 
@@ -194,8 +198,10 @@ export default function App() {
       {/* Footer */}
       <footer className="bg-white border-t border-slate-200 py-6 pb-24 sm:pb-6 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="font-semibold text-slate-700">
-            Healthcare Financial Navigator (CareNav) • Connecting Patient, Hospital, Schemes & Insurance
+          <div className="font-semibold text-slate-700 flex items-center gap-1.5 justify-center sm:justify-start">
+            <span className="font-extrabold text-emerald-800">InCare</span>
+            <span className="text-slate-400">•</span>
+            <span>Connecting Patient, Hospital, Schemes & Insurance</span>
           </div>
           <div className="text-slate-500">
             Designed for Ayushman Bharat PM-JAY, MJPJAY, IRDAI TPAs, Hospital Indigent Funds & Cancer Relief Trusts

@@ -28,15 +28,21 @@ export const AINavigatorChat: React.FC<AINavigatorChatProps> = ({
   onNavigateTab
 }) => {
   const t = TRANSLATIONS[language];
+  const getWelcomeText = (lang: Language, p: PatientProfile) => {
+    if (lang === 'hi') {
+      return `नमस्ते! मैं आपका InCare (इनकेयर) AI वित्तीय सहायक हूँ। ${p.name} (${p.disease}) के उपचार खर्च को कम करने, सरकारी योजनाओं (आयुष्मान भारत / MJPJAY), बीमा दावों और अस्पताल रियायत के लिए मैं आपकी सहायता के लिए तैयार हूँ। आप मुझसे कोई भी सवाल पूछ सकते हैं।`;
+    }
+    if (lang === 'mr') {
+      return `नमस्कार! मी तुमचा InCare (इनकेअर) AI सहाय्यक आहे. ${p.name} (${p.disease}) यांच्या उपचाराचा खर्च कमी करण्यासाठी, शासकीय योजना (MJPJAY / PM-JAY), विमा दावे आणि रुग्णालय सवलतीबद्दल मी मार्गदर्शन करण्यास तयार आहे.`;
+    }
+    return `Hello! I am your InCare AI Financial Assistant. I have analyzed ${p.name}'s profile (${p.disease}, estimated cost ₹${p.estimatedCost.toLocaleString('en-IN')}). I can guide you on combining Ayushman Bharat / MJPJAY, private insurance, hospital trust waivers, and resolving claim queries.`;
+  };
+
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: 'init_msg',
       sender: 'navigator',
-      text: language === 'hi'
-        ? `नमस्ते! मैं आपका 'हेल्थकेयर फाइनेंशियल नेविगेटर' हूँ। ${profile.name} (${profile.disease}) के उपचार खर्च को कम करने, सरकारी योजनाओं, बीमा दावों और अस्पताल रियायत के लिए मैं आपकी सहायता के लिए तैयार हूँ। आप मुझसे कोई भी सवाल पूछ सकते हैं।`
-        : language === 'mr'
-        ? `नमस्कार! मी तुमचा 'हेल्थकेयर फायनान्शियल नेव्हिगेटर' आहे. ${profile.name} (${profile.disease}) यांच्या उपचाराचा खर्च कमी करण्यासाठी, शासकीय योजना, विमा आणि रुग्णालय सवलतीबद्दल मी मार्गदर्शन करण्यास तयार आहे.`
-        : `Hello! I am your AI Financial Care Navigator. I have analyzed ${profile.name}'s profile (${profile.disease}, estimated cost ₹${profile.estimatedCost.toLocaleString('en-IN')}). I can guide you on combining Ayushman Bharat / MJPJAY, private insurance, hospital trust waivers, and resolving claim queries.`,
+      text: getWelcomeText(language, profile),
       timestamp: 'Just now',
       source: 'gemini',
       suggestedActions: [
@@ -50,6 +56,19 @@ export const AINavigatorChat: React.FC<AINavigatorChatProps> = ({
   const [loading, setLoading] = useState<boolean>(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Update initial greeting if user switches language or preset before chatting
+  useEffect(() => {
+    setMessages(prev => {
+      if (prev.length === 1 && prev[0].id === 'init_msg') {
+        return [{
+          ...prev[0],
+          text: getWelcomeText(language, profile)
+        }];
+      }
+      return prev;
+    });
+  }, [language, profile]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -203,7 +222,7 @@ export const AINavigatorChat: React.FC<AINavigatorChatProps> = ({
                     <div className="flex items-center justify-between gap-2 pb-2 mb-2 border-b border-slate-100 text-[11px] font-semibold text-slate-700">
                       <span className="flex items-center gap-1 text-emerald-800">
                         <Sparkles className="w-3 h-3 text-emerald-600" />
-                        CareNav Intelligence
+                        InCare Intelligence
                       </span>
                       <button
                         onClick={() => handleCopy(msg.id, msg.text)}

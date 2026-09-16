@@ -67,16 +67,24 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-3">
         {/* Brand identity */}
         <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-2xs shrink-0">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-emerald-600 via-emerald-700 to-teal-700 flex items-center justify-center text-white shadow-xs shrink-0 ring-1 ring-emerald-500/20">
             <HeartHandshake className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="font-black text-slate-900 text-base sm:text-lg leading-tight tracking-tight">
-                {t.appTitle}
+              <h1 className="text-lg sm:text-xl font-black tracking-tight leading-tight flex items-baseline">
+                {language === 'en' ? (
+                  <span className="flex items-baseline tracking-tight">
+                    <span className="text-emerald-700 font-extrabold">In</span>
+                    <span className="text-slate-900 font-black">Care</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 inline-block ml-0.5 mb-0.5"></span>
+                  </span>
+                ) : (
+                  <span className="text-slate-900 font-black">{t.appTitle}</span>
+                )}
               </h1>
-              <span className="hidden md:inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full">
-                <Sparkles className="w-3 h-3" />
+              <span className="hidden md:inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200/80 rounded-full">
+                <Sparkles className="w-3 h-3 text-emerald-600" />
                 Cross-Source
               </span>
             </div>

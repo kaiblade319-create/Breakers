@@ -1,5 +1,5 @@
 {
-  "name": "InCare",
+  "name": "FinCare",
   "description": "Unified patient financial and administrative assistance platform connecting government schemes, insurance claims, hospital assistance, and NGOs.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]

@@ -30,12 +30,12 @@ export const AINavigatorChat: React.FC<AINavigatorChatProps> = ({
   const t = TRANSLATIONS[language];
   const getWelcomeText = (lang: Language, p: PatientProfile) => {
     if (lang === 'hi') {
-      return `नमस्ते! मैं आपका InCare (इनकेयर) AI वित्तीय सहायक हूँ। ${p.name} (${p.disease}) के उपचार खर्च को कम करने, सरकारी योजनाओं (आयुष्मान भारत / MJPJAY), बीमा दावों और अस्पताल रियायत के लिए मैं आपकी सहायता के लिए तैयार हूँ। आप मुझसे कोई भी सवाल पूछ सकते हैं।`;
+      return `नमस्ते! मैं आपका FinCare (फिनकेयर) AI वित्तीय सहायक हूँ। ${p.name} (${p.disease}) के उपचार खर्च को कम करने, सरकारी योजनाओं (आयुष्मान भारत / MJPJAY), बीमा दावों और अस्पताल रियायत के लिए मैं आपकी सहायता के लिए तैयार हूँ। आप मुझसे कोई भी सवाल पूछ सकते हैं।`;
     }
     if (lang === 'mr') {
-      return `नमस्कार! मी तुमचा InCare (इनकेअर) AI सहाय्यक आहे. ${p.name} (${p.disease}) यांच्या उपचाराचा खर्च कमी करण्यासाठी, शासकीय योजना (MJPJAY / PM-JAY), विमा दावे आणि रुग्णालय सवलतीबद्दल मी मार्गदर्शन करण्यास तयार आहे.`;
+      return `नमस्कार! मी तुमचा FinCare (फिनकेअर) AI सहाय्यक आहे. ${p.name} (${p.disease}) यांच्या उपचाराचा खर्च कमी करण्यासाठी, शासकीय योजना (MJPJAY / PM-JAY), विमा दावे आणि रुग्णालय सवलतीबद्दल मी मार्गदर्शन करण्यास तयार आहे।`;
     }
-    return `Hello! I am your InCare AI Financial Assistant. I have analyzed ${p.name}'s profile (${p.disease}, estimated cost ₹${p.estimatedCost.toLocaleString('en-IN')}). I can guide you on combining Ayushman Bharat / MJPJAY, private insurance, hospital trust waivers, and resolving claim queries.`;
+    return `Hello! I am your FinCare AI Financial Assistant. I have analyzed ${p.name}'s profile (${p.disease}, estimated cost ₹${p.estimatedCost.toLocaleString('en-IN')}). I can guide you on combining Ayushman Bharat / MJPJAY, private insurance, hospital trust waivers, and resolving claim queries.`;
   };
 
   const [messages, setMessages] = useState<ChatMessage[]>([
@@ -222,7 +222,7 @@ export const AINavigatorChat: React.FC<AINavigatorChatProps> = ({
                     <div className="flex items-center justify-between gap-2 pb-2 mb-2 border-b border-slate-100 text-[11px] font-semibold text-slate-700">
                       <span className="flex items-center gap-1 text-emerald-800">
                         <Sparkles className="w-3 h-3 text-emerald-600" />
-                        InCare Intelligence
+                        FinCare Intelligence
                       </span>
                       <button
                         onClick={() => handleCopy(msg.id, msg.text)}

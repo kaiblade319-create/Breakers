@@ -75,7 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <h1 className="text-lg sm:text-xl font-black tracking-tight leading-tight flex items-baseline">
                 {language === 'en' ? (
                   <span className="flex items-baseline tracking-tight">
-                    <span className="text-emerald-700 font-extrabold">In</span>
+                    <span className="text-emerald-700 font-extrabold">Fin</span>
                     <span className="text-slate-900 font-black">Care</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 inline-block ml-0.5 mb-0.5"></span>
                   </span>

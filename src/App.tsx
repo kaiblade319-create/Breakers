@@ -199,7 +199,7 @@ export default function App() {
       <footer className="bg-white border-t border-slate-200 py-6 pb-24 sm:pb-6 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="font-semibold text-slate-700 flex items-center gap-1.5 justify-center sm:justify-start">
-            <span className="font-extrabold text-emerald-800">InCare</span>
+            <span className="font-extrabold text-emerald-800">FinCare</span>
             <span className="text-slate-400">•</span>
             <span>Connecting Patient, Hospital, Schemes & Insurance</span>
           </div>

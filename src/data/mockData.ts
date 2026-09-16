@@ -270,7 +270,7 @@ export const INITIAL_TRACKING_STREAMS: StreamApplication[] = [
     currentStatus: 'Application Docket Prepared',
     statusType: 'in_progress',
     steps: [
-      { id: '1', title: 'Application Dossier Generated', status: 'completed', date: 'Today, 09:00 AM', note: 'Ready for submission via InCare One-App' },
+      { id: '1', title: 'Application Dossier Generated', status: 'completed', date: 'Today, 09:00 AM', note: 'Ready for submission via FinCare One-App' },
       { id: '2', title: 'Document Screening & Case Review', status: 'in_progress', date: 'In Queue', note: 'Verifying biopsy report and hospital tariff' },
       { id: '3', title: 'Grant Committee Sanction', status: 'pending', note: 'Medicine vouchers issued directly to pharmacy' }
     ],
@@ -313,7 +313,7 @@ export const PRESET_TRACKING_STREAMS: Record<string, StreamApplication[]> = {
       currentStatus: 'Action Required: Medical Superintendent Endorsement',
       statusType: 'in_progress',
       steps: [
-        { id: '1', title: 'RAN Application Form Filled', status: 'completed', date: '13 Sep', note: 'Prepared via InCare One-App' },
+        { id: '1', title: 'RAN Application Form Filled', status: 'completed', date: '13 Sep', note: 'Prepared via FinCare One-App' },
         { id: '2', title: 'BPL Income Certificate Verification', status: 'completed', date: '14 Sep', note: 'Income certified < ₹1.8L' },
         { id: '3', title: 'HOD Cardiology & MS Signature', status: 'action_required', date: 'Pending Today', note: 'Requires signature on Section 4' },
         { id: '4', title: 'Ministry Fund Allocation to AIIMS Account', status: 'pending', note: 'Direct grant allocation' }
